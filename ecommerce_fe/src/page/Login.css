@@ -1,0 +1,250 @@
+.login-container {
+  background-color: #f9fafb;
+  width: 100vw;
+}
+.login-navbar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: white;
+  top: 0;
+  z-index: 100;
+  height: 100%;
+  padding-left: 10%;
+}
+
+.login-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.login-info img {
+  width: 550px; 
+  max-width: 100%;
+  height: auto;
+}
+
+
+.login-logo img {
+    width: 50px;
+    height: auto;
+}
+.login-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 25px;
+    height: 50px;
+    color: #ee4d2d;
+}
+.login-logo:hover {
+    color: #ee4d2d;
+}
+
+.login-navbar p {
+  color: black;
+  font-size: 1.5rem;
+  margin-left: 2%;;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 10% 0 10%; 
+  min-height: 100vh;
+  background: #ee4d2d;
+}
+
+.login-form {
+  position: relative;
+  max-width: 22rem;
+  width: 100%;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  background: white;
+  border-radius: 0.4rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  border: none;
+  border-radius: 0.375rem;
+  outline: none;
+  transition: background-color 0.2s;
+  background-color: #fff;  
+  color: #1f2937;  
+}
+
+.login-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1f2937;
+}
+
+.error-message {
+  color: #ef4444;
+  background: #fef2f2;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.login-form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.input-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+  margin-left: 0.75rem;
+}
+
+.form-input:focus {
+  background-color: #eff6ff;
+}
+
+.input-group:focus-within {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6, 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.15s;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.6rem;
+  background: #ee4d2d;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+}
+
+.login-button:hover {
+  background: #ff7337;
+}
+
+.login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading .spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+.register-link{
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none;
+  color: #ee4d2d;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.register-link:hover {
+  text-decoration: underline;
+  color: #ff7337;
+}
+
+.forgot-password-link{
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #ddd;
+}
+
+.or-divider::before {
+  margin-right: 10px;
+}
+
+.or-divider::after {
+  margin-left: 10px;
+}
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  color: black;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: white;
+  transition: background-color 0.2s;
+  border: 1px solid #ccc;
+}
+
+.social-button img {
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5rem;
+}
