@@ -1,0 +1,13 @@
+# Node.js
+ecommerce_fe/node_modules/
+ecommerce_fe/dist/
+*.log
+
+# Python - virtual environment
+ecommerce_be/venv/
+
+# VSCode settings
+.vscode/
+
+# Environment files
+.env

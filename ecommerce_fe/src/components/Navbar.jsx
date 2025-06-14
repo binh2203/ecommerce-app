@@ -6,10 +6,16 @@ import { faBell as Bell } from '@fortawesome/free-solid-svg-icons';
 import {faCircleInfo} from '@fortawesome/free-solid-svg-icons';
 import { faSquareFacebook } from '@fortawesome/free-brands-svg-icons'; 
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    setUser(storedUser);
+  }, []); 
+  const isLogin = user !== null;
   return (
     <nav className="navbar">
         <div className='navbar-top'>
@@ -17,7 +23,7 @@ function Navbar() {
                 <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
                     <li><a href="/">Trang chủ</a></li>
                     <li className="separator">|</li>
-                    <li><a href="/Register">Trở thành Người bán Shopee</a></li>
+                    <li><a href="/register">Trở thành Người bán Shopee</a></li>
                     <li className="separator">|</li>
                     <li><a href="https://www.facebook.com/dcb2203">Liên hệ &nbsp; <FontAwesomeIcon icon={faSquareFacebook} /></a></li>
                 </ul>
@@ -36,9 +42,28 @@ function Navbar() {
                     <li>
                         <a href="/support">Hỗ Trợ &nbsp; <FontAwesomeIcon icon={faCircleInfo} /></a>
                     </li>
-                    <li><a href="/register">Đăng ký</a></li>
-                    <li className="separator">|</li>
-                    <li><a href="/login">Đăng nhập</a></li>
+                    { isLogin ?  (
+                        <li className='user-container'>
+                            <a className="navbar-user">
+                                <img className="image-avatar" src={`/assets/avata.jpg`} alt="avatar" /> 
+                                <p>{user}</p>     
+                            </a>
+                            <div className="user-popup">
+                                <div className="arrow-up"></div>
+                                <a href="/profile">Thông tin cá nhân</a>
+                                <a href="/orders">Đơn hàng của tôi</a> 
+                                <a href="/" onClick={() => {
+                                    localStorage.removeItem('user');
+                                    setUser(null);
+                                }}>Đăng xuất</a>
+                            </div>
+                        </li>
+                    ) : (
+                        
+                        <><li><a href="/register">Đăng ký</a></li>
+                        <li className="separator">|</li>
+                        <li><a href="/login">Đăng nhập</a></li></>
+                    )}
                 </ul>
             </div>
         </div>
