@@ -11,10 +11,12 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 def create_user(db: Session, user_data):
     hashed_pw = hash_password(user_data.password)
     user = models.User(
+        email=user_data.email,
         name=user_data.name,
         gender=user_data.gender,
         date_of_birth=user_data.date_of_birth,
-        email=user_data.email,
+        picture=user_data.picture,
+        login_provider=user_data.login_provider,
         password=hashed_pw,
     )
     db.add(user)

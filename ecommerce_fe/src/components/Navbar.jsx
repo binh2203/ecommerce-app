@@ -13,7 +13,8 @@ function Navbar() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
-    setUser(storedUser);
+    console.log(storedUser);
+    setUser(JSON.parse(storedUser));
   }, []); 
   const isLogin = user !== null;
   return (
@@ -23,7 +24,13 @@ function Navbar() {
                 <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
                     <li><a href="/">Trang chủ</a></li>
                     <li className="separator">|</li>
-                    <li><a href="/register">Trở thành Người bán Shopee</a></li>
+                    <li>
+                        {isLogin ? (
+                            <a href="/seller">Kênh người bán</a>
+                        ) : (
+                            <a href="/register">Trở thành Người bán Shopee</a>
+                        )}
+                    </li>
                     <li className="separator">|</li>
                     <li><a href="https://www.facebook.com/dcb2203">Liên hệ &nbsp; <FontAwesomeIcon icon={faSquareFacebook} /></a></li>
                 </ul>
@@ -31,10 +38,10 @@ function Navbar() {
             <div className='navbar-top-right'>
                 <ul className="navbar-links">
                     <li>
-                        <div class="notice-container">
+                        <div className="notice-container">
                             <a href="/notice">Thông Báo &nbsp; <FontAwesomeIcon icon={Bell} /></a>
-                            <div class="notice-popup">
-                                <div class="arrow-up"></div>
+                            <div className="notice-popup">
+                                <div className="arrow-up"></div>
                                 <p>Đăng nhập để xem thông báo của bạn</p>
                             </div>
                         </div>  
@@ -45,8 +52,8 @@ function Navbar() {
                     { isLogin ?  (
                         <li className='user-container'>
                             <a className="navbar-user">
-                                <img className="image-avatar" src={`/assets/avata.jpg`} alt="avatar" /> 
-                                <p>{user}</p>     
+                                <img className="image-avatar" src={user.picture} alt="avatar" /> 
+                                <p>{user.name}</p>     
                             </a>
                             <div className="user-popup">
                                 <div className="arrow-up"></div>
@@ -76,12 +83,12 @@ function Navbar() {
                 <input type="text" placeholder="Tìm kiếm sản phẩm..." />
                 <button type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
             </div>
-            <div class="cart-container">
+            <div className="cart-container">
                 <a  href="/cart" className="navbar-cart">
                     <img className='shop-cart-img' src={`/assets/shop-cart.png`} alt="Giỏ hàng" /> 
                 </a>
-                <div class="cart-popup">
-                    <div class="arrow-up"></div>
+                <div className="cart-popup">
+                    <div className="arrow-up"></div>
                     <p>Chưa Có Sản Phẩm</p>
                 </div>
             </div>

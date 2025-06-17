@@ -1,7 +1,7 @@
-from sqlalchemy import Column, Integer, String, DECIMAL, Text, TIMESTAMP, func, Date, DateTime
+from sqlalchemy import Column, Integer, String, DECIMAL, Text, TIMESTAMP, func, Date, DateTime, Enum
 from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
-
+from datetime import date
+import enum
 
 Base = declarative_base()
 
@@ -17,12 +17,24 @@ class Product(Base):
     created_at = Column(TIMESTAMP, server_default=func.current_timestamp())
     updated_at = Column(TIMESTAMP, server_default=func.current_timestamp(), onupdate=func.current_timestamp())
 
+class GenderEnum(str, enum.Enum):
+    male = "male"
+    female = "female"
+    other = "other"
+
+class ProviderEnum(str, enum.Enum):
+    google = "google"
+    facebook = "facebook"
+
 class User(Base):
     __tablename__ = "users"
+
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
-    gender = Column(String)
-    date_of_birth = Column(Date)
-    email = Column(String, unique=True, index=True)
-    password = Column(String)
-    created_at = Column(DateTime, default=datetime.now)
+    email = Column(String(255), unique=True, nullable=False)
+    name = Column(String(255), default="")
+    gender = Column(Enum(GenderEnum), default=GenderEnum.other)
+    date_of_birth = Column(Date, default=date(2000, 1, 1))
+    picture = Column(String(255), default="avatar.jpg")
+    password = Column(String(255), nullable=True)
+    login_provider = Column(Enum(ProviderEnum), default=ProviderEnum.google)
+    created_at = Column(DateTime, default=func.now())

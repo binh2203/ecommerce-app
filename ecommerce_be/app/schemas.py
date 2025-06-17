@@ -2,6 +2,8 @@ from pydantic import BaseModel
 from datetime import datetime
 from decimal import Decimal
 from datetime import date
+from typing import Optional
+
 
 class ProductBase(BaseModel):
     name: str
@@ -21,12 +23,16 @@ class Product(ProductBase):
     class Config:
         from_attributes = True
 
+
 class UserCreate(BaseModel):
-    name: str
-    gender: str
-    date_of_birth: date
     email: str
-    password: str
+    name: str = ""
+    gender: str = "other"  
+    date_of_birth: date = date(2000, 1, 1)
+    picture: Optional[str] = "avatar.jpg"  
+    password: Optional[str] = None
+    login_provider: str = "google"  
+
 
 class UserLogin(BaseModel):
     email: str

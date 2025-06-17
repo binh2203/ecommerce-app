@@ -25,8 +25,7 @@ function Login() {
         email,
         password
       });
-      localStorage.setItem('user', response.data.user);  
-      alert(response.data.message);                     
+      localStorage.setItem('user', JSON.stringify(response.data.user));                 
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.detail || 'Lỗi đăng nhập!'); 
@@ -44,9 +43,9 @@ function Login() {
         email,
         password,
         date_of_birth: dateOfBirth,
-        gender,
+        gender
       });
-      alert(res.data.message);
+      alert('Đăng ký thành công! Vui lòng đăng nhập.');
       navigate('/login');
     } catch (err) {
       setError(err.response?.data?.detail || 'Lỗi đăng ký!');
@@ -113,9 +112,9 @@ function Login() {
                     required
                   >
                     <option value="">Chọn giới tính</option>
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                    <option value="Khác">Khác</option>
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                    <option value="other">Khác</option>
                   </select>
                 </div>
               </div></>
@@ -168,23 +167,23 @@ function Login() {
                 </Link>
               )}
             </div>
-
-            <div className="or-divider">
-              <span>HOẶC</span>
-            </div>
-
-            <div className="social-login">
-              <button className="social-button google-button">
-                <img src={`/assets/google-icon.png`} alt="Google" />
-                Google
-              </button>
-              <button className="social-button facebook-button">
-                <img src={`/assets/facebook-icon.png`} alt="Facebook" />
-                Facebook
-              </button>
-            </div>
           </form>
-
+          <div className="or-divider">
+            <span>HOẶC</span>
+          </div>
+          <div className="social-login">
+            <button className="social-button google-button"
+              onClick={() => {
+                window.location.href = 'http://127.0.0.1:8000/api/auth/google/login';
+              }}>
+              <img src={`/assets/google-icon.png`} alt="Google" />
+              Google
+            </button>
+            <button className="social-button facebook-button">
+              <img src={`/assets/facebook-icon.png`} alt="Facebook" />
+              Facebook
+            </button>
+          </div>
           <p className="login-footer">
             {isRegister ? (
               <>
