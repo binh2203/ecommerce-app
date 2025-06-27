@@ -25,6 +25,7 @@ class GenderEnum(str, enum.Enum):
 class ProviderEnum(str, enum.Enum):
     google = "google"
     facebook = "facebook"
+    email = "email"
 
 class User(Base):
     __tablename__ = "users"
@@ -36,5 +37,5 @@ class User(Base):
     date_of_birth = Column(Date, default=date(2000, 1, 1))
     picture = Column(String(255), default="avatar.jpg")
     password = Column(String(255), nullable=True)
-    login_provider = Column(Enum(ProviderEnum), default=ProviderEnum.google)
+    login_provider = Column(Enum(ProviderEnum), default=ProviderEnum.email)
     created_at = Column(DateTime, default=func.now())

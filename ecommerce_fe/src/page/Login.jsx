@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { UserIcon, EnvelopeIcon, LockClosedIcon, CalendarDaysIcon, NewspaperIcon} from '@heroicons/react/24/solid';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock, faCalendar, faNewspaper} from '@fortawesome/free-solid-svg-icons';;
 import './Login.css'; 
 import Footer from '../components/Footer';
+import { useEffect } from 'react';
+
 
 function Login() {
   const location = useLocation();
@@ -16,7 +19,13 @@ function Login() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+  
+  useEffect(() => {
+    setError(null);
+  }, [location.pathname]);
 
+  
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -33,17 +42,21 @@ function Login() {
       setIsLoading(false);
     }
   };
-
   const handleRegister = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
+    if (!passwordRegex.test(password)) {
+      setError("Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.");
+      return;
+    }
+    
     setIsLoading(true);
     try {
       const res = await axios.post('http://127.0.0.1:8000/api/register', { 
-        name,
         email,
-        password,
+        name,
+        gender,
         date_of_birth: dateOfBirth,
-        gender
+        password
       });
       alert('Đăng ký thành công! Vui lòng đăng nhập.');
       navigate('/login');
@@ -78,7 +91,7 @@ function Login() {
             {isRegister &&(
               <><div className="form-group">
                 <div className="input-group">
-                  <NewspaperIcon className="input-icon" />
+                  <FontAwesomeIcon icon={faNewspaper} className="input-icon" />
                   <input
                     id="name"
                     type="text"
@@ -91,7 +104,7 @@ function Login() {
               </div>
               <div className="form-group">
                   <div className="input-group">
-                    <CalendarDaysIcon className="input-icon" />
+                    <FontAwesomeIcon icon={faCalendar} className="input-icon" />
                     <input
                       id="date_of_birth"
                       type="date"
@@ -103,7 +116,7 @@ function Login() {
               </div>
               <div className="form-group">
                 <div className="input-group">
-                  <UserIcon className="input-icon" />
+                  <FontAwesomeIcon icon={faUser} className="input-icon" />
                   <select
                     id="gender"
                     value={gender}
@@ -121,7 +134,7 @@ function Login() {
             )}
             <div className="form-group">
               <div className="input-group">
-                <EnvelopeIcon className="input-icon" />
+                <FontAwesomeIcon icon={faEnvelope} className="input-icon" />
                 <input
                   id="email"
                   type="email"
@@ -135,7 +148,7 @@ function Login() {
             </div>
             <div className="form-group">
               <div className="input-group">
-                <LockClosedIcon className="input-icon" />
+                <FontAwesomeIcon icon={faLock} className="input-icon" />
                 <input
                   id="password"
                   type="password"
@@ -179,7 +192,7 @@ function Login() {
               <img src={`/assets/google-icon.png`} alt="Google" />
               Google
             </button>
-            <button className="social-button facebook-button">
+            <button className="social-button facebook-button"  onClick={() => setError("Tính năng đang phát triển")}>
               <img src={`/assets/facebook-icon.png`} alt="Facebook" />
               Facebook
             </button>

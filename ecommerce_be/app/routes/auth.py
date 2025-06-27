@@ -8,7 +8,7 @@ from ..database import get_db
 from dotenv import load_dotenv
 from authlib.integrations.starlette_client import OAuth
 from ..auth_utils import get_current_user_from_token
-
+from ..crud import sanitize_filename, save_avatar
 import os
 
 # Load biến môi trường
@@ -45,7 +45,8 @@ async def google_callback(request: Request):
         print(userinfo)
         email = userinfo.get("email")
         name = userinfo.get("name", "")
-        picture = userinfo.get("picture", "")
+        picture = sanitize_filename(email)
+        save_avatar(userinfo.get("picture", ""), picture)       
         login_provider = "google"
 
         if not email:
@@ -87,7 +88,7 @@ def login(user: schemas.UserLogin, db: Session = Depends(database.get_db)):
     db_user = db.query(models.User).filter(models.User.email == user.email).first()
     if not db_user or not verify_password(user.password, db_user.password):
         raise HTTPException(status_code=400, detail="Sai email hoặc mật khẩu")
-
+    print(db_user)
     token = create_access_token(data={"sub": db_user.email})
     return {
         "message": "Đăng nhập thành công!",
@@ -95,7 +96,10 @@ def login(user: schemas.UserLogin, db: Session = Depends(database.get_db)):
         "user": {
             "name": db_user.name,
             "email": db_user.email,
-            "picture": db_user.picture
+            "picture": db_user.picture,
+            "gender": db_user.gender.value,
+            "date_of_birth": db_user.date_of_birth.isoformat(),
+            "login_provider": db_user.login_provider.value
         }
     }
 @router.get("/me")

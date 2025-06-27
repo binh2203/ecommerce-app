@@ -31,7 +31,7 @@ class UserCreate(BaseModel):
     date_of_birth: date = date(2000, 1, 1)
     picture: Optional[str] = "avatar.jpg"  
     password: Optional[str] = None
-    login_provider: str = "google"  
+    login_provider: str = "email" 
 
 
 class UserLogin(BaseModel):

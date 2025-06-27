@@ -35,10 +35,10 @@ app.add_middleware(
 )
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-IMAGE_DIR = os.path.join(BASE_DIR, "data_base", "product_images")
+IMAGE_PRODUCT_DIR = os.path.join(BASE_DIR, "data_base", "product_images")
 
-app.mount("/images", StaticFiles(directory=IMAGE_DIR), name="images")
-
+app.mount("/product-images", StaticFiles(directory=IMAGE_PRODUCT_DIR), name="product-images")
+app.mount("/avatars", StaticFiles(directory=os.path.join(BASE_DIR, "data_base", "avatar_images")), name="avatars")
 
 origins = [
     "http://localhost:5173",

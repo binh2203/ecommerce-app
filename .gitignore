@@ -5,7 +5,8 @@ ecommerce_fe/dist/
 
 # Python - virtual environment
 ecommerce_be/venv/
-
+ecommerce_be/app/__pycache__/
+ecommerce_be/app/routes/__pycache__/
 data_base
 # VSCode settings
 .vscode/

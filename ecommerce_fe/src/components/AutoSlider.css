@@ -113,3 +113,23 @@
 .indicator.active {
   background-color: #EE4D2D;
 }
+
+@media (max-width: 1023px) {
+  .static-banner {
+    display: none;
+  }
+
+}
+
+@media (max-width: 570px) {
+  .container-auto-slider {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 571px) {
+  .container-auto-slider {
+    padding: 20px 4% 20px 4%;
+    height: 210px;
+  }
+}

@@ -1,0 +1,164 @@
+.profile-container{
+  background-color: #f5f5f5;
+  width: 100vw;
+  min-height: 100vh;
+}
+.profile-content {
+  background-color: #f5f5f5;
+  display: flex;
+  height: 80vh ;
+}
+.content-left {
+  float: left;
+  height: 100%;
+  width: 250px;
+  margin-left: 10%;
+}
+
+.profile-menu {
+  background-color: #f5f5f5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;  
+  padding: 20px;
+  gap: 10px; 
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  color: #367bd5;
+}
+.dropdown-button {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border: none;
+  color: #333;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-button:focus {
+  outline: none;
+}
+.dropdown-menu {
+  top: 100%;
+  text-align: left;
+  padding-left: 42px;
+  background-color: #f5f5f5;
+  width: 140px; 
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  color: black;
+}
+
+.content-right {
+  float: right;
+  background-color: white;
+  width: 1000px;
+  margin: 30px 10% 50px 0;
+}
+
+.edit-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 65px 0 20px 0;
+}
+
+
+.edit-profile img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.edit-profile span{
+  font-size: 15px;
+  color: #333;
+}
+
+.content-icon-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  color: gray;
+}
+.content-icon-edit p {
+  font-size: 15px;
+}
+.icon-edit {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+.profile-head {
+  color: #333;
+  border-bottom: 0.01px solid #ccc;
+  margin-left: 40px; 
+  margin-right: 40px; 
+  padding-bottom: 10px;
+  gap: 5px;
+}
+.profile-head p{
+  margin-top: -18px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 16px; 
+}
+
+.grid-item {
+  color: #333;
+  padding: 10px;
+}
+
+.right {
+  color: gray;
+  text-align: right;
+}
+.profile-info{
+  display: flex;
+}
+.profile-left {
+  float: left;
+  width: 60%;
+  margin: 40px 200px 10px 40px;
+}
+
+.profile-right {
+  justify-content: center;
+  align-items: center;
+  float: right;
+  width: 40%;
+  padding: 20px;
+  margin: 40px 40px 10px 10px;
+  border-left: 0.01px solid #ccc;
+}
+
+.profile-right img{
+  border-radius: 50%;
+}

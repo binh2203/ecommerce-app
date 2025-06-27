@@ -40,7 +40,7 @@ function AutoSlider() {
         >
           {slides.map((slide) => (
             <div key={slide.id} className="slide">
-              <img src={slide.image} alt={`Slide ${slide.id}`} />
+              <a href="/"><img src={slide.image} alt={`Slide ${slide.id}`} /></a>            
             </div>
           ))}
         </div>
@@ -63,7 +63,7 @@ function AutoSlider() {
         </button>
       </div>
       <div className="static-banner">
-        <img src="/banners/banner5.jpg" alt="banner" />
+        <a href="/" ><img src="/banners/banner5.jpg" alt="banner" /></a>
       </div>
     </div>
   );

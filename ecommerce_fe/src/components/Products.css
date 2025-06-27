@@ -12,15 +12,11 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 }
 
-@media (min-width: 760px) {
-  .grid {
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
+
 
 .product-card {
   display: flex;
@@ -63,4 +59,25 @@
 
 .product-card p {
   margin: 0;
+}
+
+
+@media (max-width: 1023px) {
+  .container-products {
+    margin: 20px 4% 0 4%;
+  }
+}
+
+@media (max-width: 570px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 571px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
 }
