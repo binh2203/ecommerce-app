@@ -3,13 +3,16 @@ ecommerce_fe/node_modules/
 ecommerce_fe/dist/
 *.log
 
-# Python - virtual environment
+# Python - virtual environment & compiled files
 ecommerce_be/venv/
-ecommerce_be/app/__pycache__/
-ecommerce_be/app/routes/__pycache__/
-data_base
+*.pyc
+__pycache__/
+
+# Cơ sở dữ liệu & dữ liệu sinh ra
+data_base/
+
 # VSCode settings
 .vscode/
 
-# Environment files
+# Environment variables
 .env
